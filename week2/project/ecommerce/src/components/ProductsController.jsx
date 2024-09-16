@@ -9,18 +9,16 @@ const ProductsController = ({ selectedCategory }) => {
 
     const fetchProducts = async () => {
         try {
-            if (!selectedCategory) {
-                const response = await fetch(productsApiUrl);
-                const data = await response.json();
-                setProducts(data);
-                setErrorFetch(null);
-            } else {
-                const response = await fetch(`${productsApiUrl}/category/${selectedCategory}`);
-                const data = await response.json();
-                setProducts(data);
-                setErrorFetch(null);
+            let apiUrl = productsApiUrl;
+
+            if (selectedCategory) {
+                apiUrl = `${productsApiUrl}/category/${selectedCategory}`;
             }
 
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            setProducts(data);
+            setErrorFetch(null);
         } catch (error) {
             console.error('Error fetching products: ', error);
             setErrorFetch(error);
@@ -30,6 +28,7 @@ const ProductsController = ({ selectedCategory }) => {
     useEffect(() => {
         fetchProducts();
     }, [selectedCategory]);
+
 
     return (
         errorFetch ? <h1>There was an error fetching products</h1> :
