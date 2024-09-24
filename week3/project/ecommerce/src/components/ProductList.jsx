@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useFavorites } from './FavoritesContext';
+import { useFavorites } from '../contexts/FavoritesContext';
 import useFetch from '../hooks/useFetch';
 
 import heartSolid from '../assets/heart-solid.svg';
