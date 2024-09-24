@@ -42,12 +42,13 @@
   flex: 1 1 300px;
   padding: 0.5rem;
   object-fit: cover;
+
 }
 
 .product {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   padding: 1rem;
 }
 
